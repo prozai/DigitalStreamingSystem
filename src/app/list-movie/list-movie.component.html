@@ -1,28 +1,56 @@
-<div class="container">
-    <h1>You are viewing Movie list</h1>
-    <table class="table-striped">
-        <thead>
-           <tr>
-              <th>Movie Id</th>
-              <th>Movie Title</th>
-              <th>Movie Price</th>
-              <th>Movie release Year</th>
-              <th></th>
-              <th></th>
-           </tr>
-        </thead>
-        <tbody class="">
-          <!-- angular takes care of DOM manipulation -->
-          <!-- structural directive -->
-          <tr *ngFor="let movie of movies">
-           <!-- {{}} string interpolation-->
-           <td>{{movie.movie_id}}</td>
+<!-- <div class="container">
+   <h1>You are viewing Movie list</h1>
+
+   <table class="table-striped">
+      <thead>
+         <tr>
+            <th>Movie Id</th>
+            <th>Movie Title</th>
+            <th>Movie Price</th>
+            <th>Movie release Year</th>
+            <th></th>
+            <th></th>
+         </tr>
+      </thead>
+      <tbody class="">
+         <tr *ngFor="let movie of movies">
+            <td>{{movie.movie_id}}</td>
             <td>{{movie.movie_title}}</td>
             <td>{{movie.movie_cost | currency}}</td>
             <td>{{movie.movie_year }}</td>
-            <td><button class="editBtn" (click)="updateMovie(movie.movie_id)">Edit</button></td>
-            <td><button class="deleteBtn" (click)="deleteMovie(movie)">Delete</button></td>
-          </tr>
-        </tbody>
-     </table>
+            <td><button class="btn btn-sm btn-outline-secondary" (click)="updateMovie(movie.movie_id)">Edit</button>
+            </td>
+            <td><button class="btn btn-sm btn-outline-secondary" (click)="deleteMovie(movie)">Delete</button></td>
+         </tr>
+      </tbody>
+   </table>
+</div> -->
+<div class="container">
+   <div class="album py-5 bg-dark" class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3" >
+      <div class="container" *ngFor="let movie of movies" >
+         <div>
+            <div class="col">
+               <div class="card shadow-sm" (click)="updateMovie(movie.movie_id)">
+                  <svg class="bd-placeholder-img card-img-top" width="100%" height="225" role="img"
+                     aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                     <title>{{movie.movie_title}}</title>
+                     <rect width="100%" height="100%" fill="#55595c" />
+                     <text x="50%" y="50%" fill="#eceeef" dy=".3em">Show Me Your Badge</text>
+                  </svg>
+                  <div class="card-body">
+                     <!-- <td>{{movie.movie_id}}</td> -->
+                     <p class="card-text">{{movie.movie_title}}</p>
+                     <p class="card-text">{{movie.movie_cost | currency}}</p>
+                     <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                           <button class="btn btn-sm btn-outline-secondary" (click)="deleteMovie(movie)">Delete</button>
+                        </div>
+                        <small class="text-muted">{{movie.movie_year}}</small>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
 </div>

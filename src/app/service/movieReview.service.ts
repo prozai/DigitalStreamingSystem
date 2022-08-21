@@ -13,7 +13,7 @@ export class MovieReviewService {
     constructor(private httpClient: HttpClient) { }
     // get all  movie review
     getMovieReview(){
-        return this.httpClient.get<MovieReview[]>(this.baseUrl + "/review");
+        return this.httpClient.get<MovieReview[]>(this.baseUrl);
     }
     // get movie review by id
     getMovieReviewById(id: number) {
@@ -26,7 +26,7 @@ export class MovieReviewService {
     // add movie review
     createMovieReview(movieReview: MovieReview) {
         // post : create a new movie review record
-        return this.httpClient.post(this.baseUrl + "/review", movieReview);
+        return this.httpClient.post(this.baseUrl, movieReview);
     }
     // update movie review
     updateMovieReview(id: number, movieReview:any): Observable<Object> {

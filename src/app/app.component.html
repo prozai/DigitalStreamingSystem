@@ -1,30 +1,42 @@
 <div class="">
-      <nav class="navbar navbar-dark navbar-expand-sm">
-        <ul class="navbar-nav">
-          <li>
-            <a class="nav-link" routerLink="/movies" routerLinkActive="active">View Movies</a>
+  <!-- TODO: implement tabs on activation -->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="AddMovies-tab" role="tab" data-toggle="tab" routerLink="/movies" routerLinkActive="active" aria-controls="ViewMovies" aria-selected="true">View Movies</a>
           </li>
-          <li>
-            <a class="nav-link" routerLink="/add-movies" routerLinkActive="active">Add Movies</a>
+          <li class="nav-item">
+            <a aria-controls="AddMovies" aria-selected="true" data-toggle="tab" role="tab" class="nav-link active" routerLink="/add-movies" routerLinkActive="active">Add Movies</a>
           </li>
-          <li>
-            <a class="nav-link" routerLink="/movie-reviews" routerLinkActive="active">View Movie Review</a>
+          <li class="nav-item">
+            <a aria-controls="ViewMovieReview" aria-selected="" data-toggle="tab" role="tab" class="nav-link active" routerLink="/movie-reviews" routerLinkActive="active">View Movie Review</a>
           </li>
-          <li>
-            <a class="nav-link" routerLink="/search-actors" routerLinkActive="active">Search</a>
+          <li class="nav-item">
+            <a data-toggle="tab" role="tab" class="nav-link active" routerLink="/search-actors" routerLinkActive="active">Search</a>
           </li>
-          <li>
-            <a class="nav-link" routerLink="/add-actor" routerLinkActive="active">Add Actor</a>
+          <li class="nav-item">
+            <a data-toggle="tab" role="tab" class="nav-link active" routerLink="/add-actor" routerLinkActive="active">Add Actor</a>
           </li>
-          <li>
-            <a class="nav-link" routerLink="/actors" routerLinkActive="active">View Actor</a>
+          <li class="nav-item">
+            <a data-toggle="tab" role="tab" class="nav-link active" routerLink="/actors" routerLinkActive="active">View Actor</a>
           </li>
-          <li>
-            <a class="nav-link" routerLink="/add-movie-review" routerLinkActive="active">Add Movie Review</a>
+          <li class="nav-item">
+            <a data-toggle="tab" role="tab" class="nav-link active" routerLink="/add-movie-review" routerLinkActive="active">Add Movie Review</a>
           </li>
           
+            <li>
+              <form class="form-inline" onsubmit="">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </li>
+          
+          
         </ul>
-      </nav>
+        
+        <!-- <div class="tab-content" id="myTabContent">
+          
+        </div> -->
   <!-- <app-login></app-login> -->
   <router-outlet></router-outlet>
 </div>
+
