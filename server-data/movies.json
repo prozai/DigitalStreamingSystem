@@ -1,0 +1,49 @@
+{
+  "movies": [
+    {
+      "id": 2,
+      "movie_title": "Lord Of the Rings: The Two Towers",
+      "movie_cost": 15,
+      "movie_year": 2002
+    },
+    {
+      "id": 3,
+      "movie_title": "Lord Of the Rings: The Return of the King",
+      "movie_cost": 15,
+      "movie_year": 2003
+    },
+    {
+      "id": 4,
+      "movie_title": "Lord Of the Rings: The Rings of Power",
+      "movie_cost": 15,
+      "movie_year": 2022
+    },
+    {
+      "id": 5,
+      "movie_title": "Harry Potter and the Philosopher's Stone",
+      "movie_cost": "5",
+      "movie_year": "2001"
+    },
+    {
+      "id": 6,
+      "movie_title": "Harry Potter and the Chamber of Secrets",
+      "movie_cost": "6",
+      "movie_year": "2002"
+    },
+    {
+      "id": 7,
+      "movie_title": "The Lord of the Rings: The Fellowship of the Ring",
+      "movie_cost": "10",
+      "movie_year": "2001"
+    }
+  ],
+  "admin": [
+    {
+      "ADMIN_ID": 1,
+      "ADMIN_NAME": "admin1",
+      "ADMIN_USERNAME": "admin",
+      "ADMIN_PASSWORD": "admin",
+      "ADMIN_EMAIL_ID": "admin@admin.com"
+    }
+  ]
+}

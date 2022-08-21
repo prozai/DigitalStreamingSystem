@@ -5,6 +5,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Json Server
+Run `json-server --watch movies.json` for a JSON server. <br>
+Navigate to `http://localhost:3000/movies`
+
+### MySql Server
+Spring boot server is running on port 8080 <br>
+Navigate to `http://localhost:8080/api/movie/displayMovie` <br>
 
 ## Code scaffolding
 

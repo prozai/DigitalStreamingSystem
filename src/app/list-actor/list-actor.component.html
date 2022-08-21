@@ -1,0 +1,30 @@
+<div class="container">
+    <h1>You are viewing Actor list</h1>
+    <table class="table-striped">
+        <thead>
+           <tr>
+              <th>Actor Id</th>
+              <th>Actor First Name</th>
+              <th>Actor Last Name</th>
+              <th>Gender</th>
+              <th>Age</th>
+              <th></th>
+              <th></th>
+           </tr>
+        </thead>
+        <tbody class="">
+          <!-- angular takes care of DOM manipulation -->
+          <!-- structural directive -->
+          <tr *ngFor="let actor of actors">
+           <!-- {{}} string interpolation-->
+           <td>{{actor.actorId}}</td>
+            <td>{{actor.firstName}}</td>
+            <td>{{actor.lastName }}</td>
+            <td>{{actor.gender }}</td>
+            <td>{{actor.age }}</td>
+            <td><button class="editBtn" (click)="updateActor(actor.actorId)">Edit</button></td>
+            <td><button class="deleteBtn" (click)="deleteActor(actor)">Delete</button></td>
+          </tr>
+        </tbody>
+     </table>
+</div>

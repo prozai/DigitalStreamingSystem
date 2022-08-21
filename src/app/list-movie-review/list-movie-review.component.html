@@ -1,0 +1,32 @@
+<div class="container">
+    <h1>You are viewing Movie review list</h1>
+    <table class="table-striped">
+        <thead>
+           <tr>
+              <th>Review Id</th>
+              <th>Date</th>
+              <th>Description</th>
+              <th>Rating</th>
+              <th>Customer Id</th>
+              <th>Movie Id</th>
+              <th></th>
+              <th></th>
+           </tr>
+        </thead>
+        <tbody class="">
+          <!-- angular takes care of DOM manipulation -->
+          <!-- structural directive -->
+          <tr *ngFor="let review of movieReview">
+           <!-- {{}} string interpolation-->
+           <td>{{review.review_id}}</td>
+            <td>{{review.date_posted}}</td>
+            <td>{{review.description | currency}}</td>
+            <td>{{review.rating }}</td>
+            <td>{{review.customer_id }}</td>
+            <td>{{review.movie_id }}</td>
+            <td><button class="editBtn" (click)="updateMovieReview(review.review_id)">Edit</button></td>
+            <td><button class="deleteBtn" (click)="deleteMovieReview(review)">Delete</button></td>
+          </tr>
+        </tbody>
+     </table>
+</div>

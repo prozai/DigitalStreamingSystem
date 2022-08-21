@@ -1,0 +1,104 @@
+<!-- <div id="background">
+    <div class="container">
+        <form class="form" [formGroup]="registerAdminForm" onsubmit="registerAdmin()">
+            <div class="flex-container">
+                <h1>Administrator Registration</h1>
+            </div>
+            <div class="flex-container">
+                <input type="hidden" formControlName="adminid" required>
+                <input type="email" placeholder="Email@email.com" formControlName="emailid" required>
+            </div>
+            <div class="notEmpty" [hidden]="!registerAdminForm.controls['emailid'].errors?.['required']"
+                *ngIf="!emailid?.valid && (emailid?.touched && emailid?.dirty)">Email is required</div>
+            <div
+                [hidden]="!registerAdminForm.controls['emailid'].errors?.['minlength'] && !registerAdminForm.controls['emailid'].errors?.['maxlength']">
+                Max Length for email</div>
+            <div class="flex-container">
+                <input type="text" placeholder="Name" formControlName="adminName" required>
+            </div>
+            <div class="notEmpty" [hidden]="!registerAdminForm.controls['adminName'].errors?.['required']"
+                *ngIf="!emailid?.valid && (adminName?.touched && adminName?.dirty)">Name is required</div>
+            <div
+                [hidden]="!registerAdminForm.controls['adminName'].errors?.['adminName'] && !registerAdminForm.controls['adminName'].errors?.['maxlength']">
+                Max Length for name</div>
+            <div class="flex-container">
+                <input type="text" placeholder="User Name" formControlName="userName" required>
+            </div>
+            <div class="flex-container">
+                <input type="password" placeholder="Password" formControlName="password" required>
+            </div>
+            <div *ngIf="!password?.valid && (password?.touched && password?.dirty)">Password is required</div>
+            <div
+                [hidden]="!registerAdminForm.controls['password'].errors?.['password'] && !registerAdminForm.controls['password'].errors?.['true']">
+                Password Mismatch</div>
+            <div class="flex-container">
+                <input type="password" placeholder="Confirm Password" formControlName="confirmPassword" required>
+            </div>
+            <div class="notEmpty"
+                *ngIf="!confirmPassword?.valid && (confirmPassword?.touched && confirmPassword?.dirty) ">Confirm
+                Password is required</div>
+            <div
+                [hidden]="!registerAdminForm.controls['confirmPassword'].errors?.['confirmPassword'] && !registerAdminForm.controls['confirmPassword'].errors?.['true']">
+                Password Mismatch</div>
+            <p
+                *ngIf="!registerAdminForm.valid  && (password?.touched) && (confirmPassword?.touched) && (password?.touched)">
+                Missing Information
+            </p>
+
+            <div class="flex-container">
+                <button class="button" id="register" disabled="!registerAdminForm.valid">Register</button>
+            </div>
+        </form>
+    </div>
+</div> -->
+<!-- without validation -->
+<div id="background">
+    <div class="container">
+        <form class="form" [formGroup]="registerAdminForm" onsubmit="registerAdmin()">
+            <div class="flex-container">
+                <h1>Administrator Registration</h1>
+            </div>
+            <div class="flex-container">
+                <input type="hidden" formControlName="admin_id" required>
+                <input type="email" placeholder="Email@email.com" formControlName="admin_email_id" required>
+            </div>
+            <div class="notEmpty" [hidden]="!registerAdminForm.controls['admin_email_id'].errors?.['required']"
+                *ngIf="!admin_email_id?.valid && (admin_email_id?.touched && admin_email_id?.dirty)">Email is required
+            </div>
+            <div
+                [hidden]="!registerAdminForm.controls['admin_email_id'].errors?.['minlength'] && !registerAdminForm.controls['admin_email_id'].errors?.['maxlength']">
+                Max Length for email
+            </div>
+            <div class="flex-container">
+                <input type="text" placeholder="Name" formControlName="admin_name" required>
+            </div>
+            <div class="notEmpty" [hidden]="!registerAdminForm.controls['admin_name'].errors?.['required']"
+                *ngIf="!admin_name?.valid && (admin_name?.touched && admin_name?.dirty)">Name is required
+            </div>
+            <div class=""
+                [hidden]="!registerAdminForm.controls['admin_name'].errors?.['admin_name'] && !registerAdminForm.controls['admin_name'].errors?.['maxlength']"
+                *ngIf="!admin_name?.valid && (admin_name?.touched && admin_name?.dirty)">Max Length for name
+            </div>
+            <div class="flex-container">
+                <input type="text" placeholder="User Name" formControlName="admin_username" required>
+            </div>
+            <div [hidden]="!registerAdminForm.controls['admin_username'].errors?.['admin_username'] && !registerAdminForm.controls['admin_username'].errors?.['maxlength']"
+                *ngIf="!admin_username?.valid && (admin_username?.touched && admin_username?.dirty)">Max Length for Username
+            </div>
+            <div class="flex-container">
+                <input type="password" placeholder="Password" formControlName="admin_password" required>
+            </div>
+            <div [hidden]="!registerAdminForm.controls['admin_password'].errors?.['admin_password'] && !registerAdminForm.controls['admin_password'].errors?.['maxlength']"
+                *ngIf="!admin_password?.valid && (admin_password?.touched && admin_password?.dirty)">Password is
+                required</div>
+            <div class="flex-container">
+                <input type="password" placeholder="Confirm Password" formControlName="confirmPassword" required>
+            </div>
+            <div [hidden]="!registerAdminForm.controls['confirmPassword'].errors?.['confirmPassword'] && !registerAdminForm.controls['confirmPassword'].errors?.['maxlength']"
+                *ngIf="!confirmPassword?.valid && (confirmPassword?.touched && confirmPassword?.dirty)">Confirm Password is required</div>
+            <div class="flex-container">
+                <button class="button" id="register" (click)="registerAdmin()">Register</button>
+            </div>
+        </form>
+    </div>
+</div>

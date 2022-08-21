@@ -1,0 +1,28 @@
+<div class="container">
+    <h1>You are viewing Movie list</h1>
+    <table class="table-striped">
+        <thead>
+           <tr>
+              <th>Movie Id</th>
+              <th>Movie Title</th>
+              <th>Movie Price</th>
+              <th>Movie release Year</th>
+              <th></th>
+              <th></th>
+           </tr>
+        </thead>
+        <tbody class="">
+          <!-- angular takes care of DOM manipulation -->
+          <!-- structural directive -->
+          <tr *ngFor="let movie of movies">
+           <!-- {{}} string interpolation-->
+           <td>{{movie.movie_id}}</td>
+            <td>{{movie.movie_title}}</td>
+            <td>{{movie.movie_cost | currency}}</td>
+            <td>{{movie.movie_year }}</td>
+            <td><button class="editBtn" (click)="updateMovie(movie.movie_id)">Edit</button></td>
+            <td><button class="deleteBtn" (click)="deleteMovie(movie)">Delete</button></td>
+          </tr>
+        </tbody>
+     </table>
+</div>
