@@ -1,6 +1,5 @@
 import { MovieReview } from './../model/movieReview.model';
 import { Component, OnInit } from '@angular/core';
-import { MovieSbService } from '../service/movie.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MovieReviewService } from '../service/movieReview.service';
 

@@ -1,35 +1,38 @@
 import { Movie } from './../model/movie.model';
-import { Component, OnInit } from '@angular/core';
-import { MovieSbService } from '../service/movie.service';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { MovieService } from '../service/movie.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-movie',
   templateUrl: './list-movie.component.html',
-  styleUrls: ['./list-movie.component.css']
+  styleUrls: ['./list-movie.component.css'],
 })
 export class ListMovieComponent implements OnInit {
-  movies?: Movie[];
-  movieSbService: MovieSbService;
+  @Input('data') movies?: Movie[] = [];
+  page: number = 1;
+  
+  movieService: MovieService;
+  // movie_title:any;
   // instantiates the movie service
-  constructor(movieSbService: MovieSbService, private router: Router) {
-    this.movieSbService = movieSbService;
+  constructor(movieService: MovieService, private router: Router) {
+    this.movieService = movieService;
   }
   // populate the list of movies array
   ngOnInit(): void {
     // initialize
-    this.movieSbService.getMovies().subscribe(
+    this.movieService.getMovies().subscribe(
       (movieData) => { this.movies = movieData }
     );
   }
   // navigate to edit movie component
   updateMovie(id: number): void {
-    // navigate to update movie component
+    // navigate to update movie c;omponent
     this.router.navigate(['update-movie', id]);
   }
   // delete movie by filtering out the movie with the id
   deleteMovie(toDeleteMovie: Movie): void {
-    this.movieSbService.deleteMovie(toDeleteMovie.movie_id).subscribe(
+    this.movieService.deleteMovie(toDeleteMovie.movie_id).subscribe(
       (data) => {
         // remove from array
         this.movies = this.movies.filter((movie) => movie != toDeleteMovie)

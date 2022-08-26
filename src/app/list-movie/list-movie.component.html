@@ -25,27 +25,30 @@
       </tbody>
    </table>
 </div> -->
+<!-- <input class="form-control" type="text" placeholder="Search" aria-label="Search" [(ngModel)]="movie_title"> -->
+
 <div class="container">
    <div class="album py-5 bg-dark" class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3" >
-      <div class="container" *ngFor="let movie of movies" >
+      <div class="" *ngFor="let movie of movies | paginate: { itemsPerPage: 10, currentPage: page }" > <!--| filter:movie_title-->
+         
          <div>
             <div class="col">
-               <div class="card shadow-sm" (click)="updateMovie(movie.movie_id)">
+               <div class="card shadow-sm" >
                   <svg class="bd-placeholder-img card-img-top" width="100%" height="225" role="img"
-                     aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                     <title>{{movie.movie_title}}</title>
+                     aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false" (click)="updateMovie(movie.movie_id)">
+                     <title>{{movie.title}}</title>
                      <rect width="100%" height="100%" fill="#55595c" />
                      <text x="50%" y="50%" fill="#eceeef" dy=".3em">Show Me Your Badge</text>
                   </svg>
                   <div class="card-body">
                      <!-- <td>{{movie.movie_id}}</td> -->
-                     <p class="card-text">{{movie.movie_title}}</p>
-                     <p class="card-text">{{movie.movie_cost | currency}}</p>
+                     <p class="card-text">{{movie.title}}</p>
+                     <p class="card-text">{{movie.cost | currency}}</p>
                      <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-                           <button class="btn btn-sm btn-outline-secondary" (click)="deleteMovie(movie)">Delete</button>
+                           <button class="btn btn-danger " (click)="deleteMovie(movie)">Delete</button>
                         </div>
-                        <small class="text-muted">{{movie.movie_year}}</small>
+                        <small class="text-muted">{{movie.year}}</small>
                      </div>
                   </div>
                </div>
@@ -53,4 +56,7 @@
          </div>
       </div>
    </div>
+</div>
+<div class="has-text-centered">
+   <pagination-controls class="my-pagination" (pageChange)="page = $event"></pagination-controls>
 </div>

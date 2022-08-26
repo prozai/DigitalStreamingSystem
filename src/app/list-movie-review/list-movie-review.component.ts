@@ -1,7 +1,7 @@
+import { Movie } from './../model/movie.model';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MovieReview } from '../model/movieReview.model';
-import { MovieSbService } from '../service/movie.service';
 import { MovieReviewService } from '../service/movieReview.service';
 
 @Component({
@@ -12,8 +12,11 @@ import { MovieReviewService } from '../service/movieReview.service';
 export class ListMovieReviewComponent implements OnInit {
   movieReview: MovieReview[];
   movieReviewService: MovieReviewService;
+  movies?: Movie[];
   // instantiates the movie service
-  constructor(movieSbService: MovieSbService, private router: Router) { }
+  constructor(movieReviewService: MovieReviewService, private router: Router) {
+    this.movieReviewService = movieReviewService;
+   }
   
   ngOnInit(): void {
     // initialize
@@ -32,5 +35,13 @@ export class ListMovieReviewComponent implements OnInit {
         this.movieReview = this.movieReview.filter((movieReview) => movieReview != toDeleteMovieReview)
       })
   }
-
+  getMovieName(movieId:number): string{
+    for(let movie of this.movies) {
+      if(movie.movie_id === movieId) {
+        return movie.title;
+      }
+    }
+    return "";
+   }
+  
 }

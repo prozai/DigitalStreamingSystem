@@ -1,0 +1,10 @@
+input:focus { 
+    outline: none !important;
+    border-color: rgb(162, 65, 165);
+    box-shadow: 0 0 10px rgb(162, 65, 165);
+}
+textarea:focus { 
+    outline: none !important;
+    border-color: rgb(162, 65, 165);
+    box-shadow: 0 0 10px rgb(162, 65, 165);
+}

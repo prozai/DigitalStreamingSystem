@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MovieSbService } from '../service/movie.service';
 import { MovieReviewService } from '../service/movieReview.service';
 
 @Component({
@@ -20,7 +19,6 @@ export class AddMovieReviewComponent implements OnInit {
       date_posted : [],
       description : [],
       rating : [],
-      customer_id : [0],
       movie_id : [0]
      });
   }

@@ -1,3 +1,4 @@
+import { SearchComponent } from './search/search.component';
 import { ListActorComponent } from './list-actor/list-actor.component';
 import { AddMovieComponent } from './add-movie/add-movie.component';
 import { NgModule } from "@angular/core";
@@ -15,7 +16,7 @@ import { AddMovieReviewComponent } from './add-movie-review/add-movie-review.com
 
 const routes : Routes = [
     // localhost:4200 default route set to login page
-    {path : '', component : LoginComponent},
+    {path : '',redirectTo: 'login', pathMatch: 'full'},
     {path : 'login', component : LoginComponent,},
     // localhost:4200/register
     {path: 'register', component: RegisterComponent},
@@ -23,29 +24,32 @@ const routes : Routes = [
     // ========================Movie Routing=========================
 
     // navigate list movies component if user is logged in
-    {path: 'movies', component: ListMovieComponent},// TODO: add auth guard
+    {path: 'movies', component: ListMovieComponent, canActivate: [AuthGuardService]},
     // navigate to add movie component if user is logged in
     {path: 'add-movies', component: AddMovieComponent, canActivate: [AuthGuardService]},
     // navigate to update movie component if user is logged in
-    {path: 'update-movie/:id', component: UpdateMovieComponent},// TODO: add auth guard
+    {path: 'update-movie/:id', component: UpdateMovieComponent, canActivate: [AuthGuardService]},
 
     // ========================Actor Routing=========================
 
     // navigate list actors component if user is logged in
-    {path: 'actors', component: ListActorComponent},// TODO: add auth guard
+    {path: 'actors', component: ListActorComponent, canActivate: [AuthGuardService]},
     // navigate to add actor component if user is logged in
     {path: 'add-actor', component: AddActorComponent, canActivate: [AuthGuardService]},
     // navigate to update actor component if user is logged in
-    {path: 'update-actor/:id', component: UpdateActorComponent},// TODO: add auth guard
+    {path: 'update-actor/:id', component: UpdateActorComponent, canActivate: [AuthGuardService]},
 
     // ========================Movie Review=========================
 
     // navigate list movie reviews component if user is logged in
-    {path: 'movie-reviews', component: ListMovieReviewComponent},// TODO: add auth guard
+    {path: 'movie-reviews', component: ListMovieReviewComponent, canActivate: [AuthGuardService]},
     // navigate to update movie review component if user is logged in
-    {path: 'update-movie-review/:id', component: UpdateMovieReviewComponent},// TODO: add auth guard
+    {path: 'update-movie-review/:id', component: UpdateMovieReviewComponent, canActivate: [AuthGuardService]},
     // navigate to add movie review component if user is logged in
-    {path: 'add-movie-review', component: AddMovieReviewComponent},// TODO: add auth guard
+    {path: 'add-movie-review', component: AddMovieReviewComponent, canActivate: [AuthGuardService]},
+
+    // ========================Search Movie=========================
+    {path: 'search-actors', component: SearchComponent, canActivate: [AuthGuardService]},
 ]
 
 @NgModule({

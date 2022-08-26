@@ -17,10 +17,10 @@ export class MovieReviewService {
     }
     // get movie review by id
     getMovieReviewById(id: number) {
-        return this.httpClient.get<MovieReview>(this.baseUrl + "/review/" + id);
+        return this.httpClient.get<MovieReview>(this.baseUrl + "/" + id);
     }
     // delete movie review
-    deleteMovieReview(id: number) {
+    deleteMovieReview(id: number) {;
         return this.httpClient.delete<MovieReview>(this.baseUrl + "/review/" + id);
     }
     // add movie review

@@ -1,6 +1,6 @@
 export class Admin{
-    adminid?: number;
-    emailid?: string;
-    userName?: string;
+    admin_id?: number;
+    emailId?: string;
+    username?: string;
     password?: string;
 }

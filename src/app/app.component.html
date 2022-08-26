@@ -1,42 +1,47 @@
 <div class="">
+  <div><h2>Administrator's Digital Streaming System</h2></div>
   <!-- TODO: implement tabs on activation -->
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" id="AddMovies-tab" role="tab" data-toggle="tab" routerLink="/movies" routerLinkActive="active" aria-controls="ViewMovies" aria-selected="true">View Movies</a>
-          </li>
-          <li class="nav-item">
-            <a aria-controls="AddMovies" aria-selected="true" data-toggle="tab" role="tab" class="nav-link active" routerLink="/add-movies" routerLinkActive="active">Add Movies</a>
-          </li>
-          <li class="nav-item">
-            <a aria-controls="ViewMovieReview" aria-selected="" data-toggle="tab" role="tab" class="nav-link active" routerLink="/movie-reviews" routerLinkActive="active">View Movie Review</a>
-          </li>
-          <li class="nav-item">
-            <a data-toggle="tab" role="tab" class="nav-link active" routerLink="/search-actors" routerLinkActive="active">Search</a>
-          </li>
-          <li class="nav-item">
-            <a data-toggle="tab" role="tab" class="nav-link active" routerLink="/add-actor" routerLinkActive="active">Add Actor</a>
-          </li>
-          <li class="nav-item">
-            <a data-toggle="tab" role="tab" class="nav-link active" routerLink="/actors" routerLinkActive="active">View Actor</a>
-          </li>
-          <li class="nav-item">
-            <a data-toggle="tab" role="tab" class="nav-link active" routerLink="/add-movie-review" routerLinkActive="active">Add Movie Review</a>
-          </li>
-          
-            <li>
+  <ul class="nav nav-tabs" aria-controls="ViewMovies" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a data-toggle="tab" role="tab" class="nav-link active" id="ViewMovies-tab" routerLink="/movies"
+        routerLinkActive="active" aria-controls="ViewMovies" aria-selected="true" ariaCurrentWhenActive="page">View Movies</a>
+    </li>
+    <li class="nav-item" aria-selected="false">
+      <a data-toggle="tab" role="tab" class="nav-link active" id="AddMovies-tab" routerLink="/add-movies"
+        routerLinkActive="active" aria-controls="AddMovies" aria-selected="false">Add Movies</a>
+    </li>
+    <li class="nav-item" aria-selected="false">
+      <a data-toggle="tab" role="tab" aria-controls="ViewMovieReview" aria-selected="" class="nav-link active"
+        routerLink="/movie-reviews" routerLinkActive="active" aria-selected="false">View Movie Review</a>
+    </li>
+    <li class="nav-item" aria-selected="false">
+      <a data-toggle="tab" role="tab" class="nav-link active" routerLink="/search-actors" routerLinkActive="active"
+        aria-selected="false">Search</a>
+    </li>
+    <li class="nav-item">
+      <a data-toggle="tab" role="tab" class="nav-link active" routerLink="/add-actor" routerLinkActive="active"
+        aria-selected="false">Add Actor</a>
+    </li>
+    <li class="nav-item">
+      <a data-toggle="tab" role="tab" class="nav-link active" routerLink="/actors" routerLinkActive="active"
+        aria-selected="false">View Actor</a>
+    </li>
+    <li class="nav-item">
+      <a data-toggle="tab" role="tab" class="nav-link active" routerLink="/add-movie-review" routerLinkActive="active"
+        aria-selected="false">Add Movie Review</a>
+    </li>
+    <!-- <li>
               <form class="form-inline" onsubmit="">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
               </form>
-            </li>
-          
-          
-        </ul>
-        
-        <!-- <div class="tab-content" id="myTabContent">
+            </li> -->
+            <button (click)="logOut()"  class="btn btn-warning">Logout </button>
+  </ul>
+
+  <!-- <div class="tab-content" id="myTabContent">
           
         </div> -->
   <!-- <app-login></app-login> -->
   <router-outlet></router-outlet>
 </div>
-

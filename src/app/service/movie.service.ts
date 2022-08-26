@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 @Injectable({
     providedIn: 'root'
 })
-export class MovieSbService {
+export class MovieService {
     baseUrl: string = 'http://localhost:8080/api/movie/displayMovie'
     // baseUrl: string = 'http://localhost:3000/movies';
     // Performs HTTP requests.

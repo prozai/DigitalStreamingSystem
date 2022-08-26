@@ -16,6 +16,10 @@ import { UpdateActorComponent } from './update-actor/update-actor.component';
 import { ListMovieReviewComponent } from './list-movie-review/list-movie-review.component';
 import { UpdateMovieReviewComponent } from './update-movie-review/update-movie-review.component';
 import { AddMovieReviewComponent } from './add-movie-review/add-movie-review.component';
+import { SearchComponent } from './search/search.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { FilterPipe } from './shared/filter.pipe';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +34,10 @@ import { AddMovieReviewComponent } from './add-movie-review/add-movie-review.com
     UpdateActorComponent,
     ListMovieReviewComponent,
     UpdateMovieReviewComponent,
-    AddMovieReviewComponent
+    AddMovieReviewComponent,
+    SearchComponent,
+    FilterPipe,
+    
   ],
   imports: [
     BrowserModule,
@@ -38,6 +45,7 @@ import { AddMovieReviewComponent } from './add-movie-review/add-movie-review.com
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
