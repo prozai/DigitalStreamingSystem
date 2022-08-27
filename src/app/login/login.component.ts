@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log("Logging in");
+    console.log("Authenticating :");
     console.log(this.loginForm.value);
 
     const loginid: string = this.loginForm.controls['loginid'].value;
@@ -38,12 +38,11 @@ export class LoginComponent implements OnInit {
           // console.log("Admin authentication status: ", adminAuthenticationStatus);
           authorised = adminAuthenticationStatus;
           if (authorised) {
-
             sessionStorage.setItem("loggedIn", 'yes');
             console.log("Admin authentication status: ", authorised);
             this.router.navigate(['movies']);
           } else {
-            this.loginForm.controls['loginid'].setValue("");
+            this.loginForm.controls['loginid'].setValue(loginid);
             this.loginForm.controls['password'].setValue("");
           }
         }

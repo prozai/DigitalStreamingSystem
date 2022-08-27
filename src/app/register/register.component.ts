@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RegisterService } from '../service/register.service';
+import { CustomvalidationService } from '../service/customvalidation.service';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +11,10 @@ import { RegisterService } from '../service/register.service';
 })
 export class RegisterComponent implements OnInit {
   registerAdminForm?: FormGroup;
-  constructor(private router:Router, private formBuilder:FormBuilder, private registerService:RegisterService) { }
+  constructor(private router:Router, 
+    private formBuilder:FormBuilder, 
+    private registerService:RegisterService,
+    private customValidator: CustomvalidationService) { }
 
   ngOnInit(): void {
     this.registerAdminForm = this.formBuilder.group({
@@ -18,7 +22,7 @@ export class RegisterComponent implements OnInit {
       email:['', [Validators.required, Validators.email]],
       name:['', Validators.required],
       username:['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
-      password:['', Validators.required],
+      password:['', Validators.compose([Validators.required, this.customValidator.patternValidator()])],
       confirmPassword:['',[Validators.required, Validators.minLength(6), Validators.maxLength(20)], this.confirmPasswordValidator],
   });
 }

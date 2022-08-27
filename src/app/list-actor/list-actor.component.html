@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <h1>You are viewing Actor list</h1>
     <table class="table-striped">
         <thead>
@@ -13,10 +13,9 @@
            </tr>
         </thead>
         <tbody class="">
-          <!-- angular takes care of DOM manipulation -->
-          <!-- structural directive -->
+          
           <tr *ngFor="let actor of actors">
-           <!-- {{}} string interpolation-->
+           
            <td>{{actor.actorId}}</td>
             <td>{{actor.firstName}}</td>
             <td>{{actor.lastName }}</td>
@@ -27,4 +26,42 @@
           </tr>
         </tbody>
      </table>
+</div> -->
+
+<div class="container">
+   <div class="album py-5 bg-dark" class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3" >
+      <!-- angular takes care of DOM manipulation -->
+      <!-- structural directive -->
+      <div class="" *ngFor="let actor of actors | paginate: { itemsPerPage: 10, currentPage: page }" > <!--| filter:movie_title-->
+         <!-- {{}} string interpolation-->
+         <div>
+            <div class="col">
+               <div class="card shadow-sm" >
+                  <svg class="bd-placeholder-img card-img-top" width="100%" height="225" role="img"
+                     aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false" (click)="updateActor(actor.actorId)">
+                     <title>{{actor.firstName}}</title>
+                     <rect width="100%" height="100%" fill="#55595c" />
+                     <a src="../assets/images/hehe.jpg"></a>
+                     <text x="50%" y="50%" fill="#eceeef" dy=".3em">Show Me Your Badge</text>
+                  </svg>
+                  <div class="card-body">
+                     <p class="card-text">{{actor.firstName}}</p>
+                     <p class="card-text">{{actor.lastName}}</p>
+                     <p class="card-text">{{actor.gender}}</p>
+                     <p class="card-text">{{actor.age}}</p>
+                     <div class="d-flex justify-content-between ;align-items-center">
+                        <div class="btn-group">
+                           <button class="btn" (click)="deleteActor(actor)">Delete</button>
+                        </div>
+                        <small class="text-muted">{{actor.actorId}}</small>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="has-text-centered">
+   <pagination-controls class="my-pagination" (pageChange)="page = $event"></pagination-controls>
 </div>

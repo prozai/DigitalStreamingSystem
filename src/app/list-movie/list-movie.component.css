@@ -52,3 +52,12 @@
   .my-pagination ::ng-deep .ngx-pagination .current {
     background-color: rgb(162, 65, 165);
   }
+
+  .btn{
+    background-color: rgb(55, 40, 78);
+    color: white;
+  }
+  .btn:hover{
+    background-color: rgb(162, 65, 165);
+    color: white;
+  }

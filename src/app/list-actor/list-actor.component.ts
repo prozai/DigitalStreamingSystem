@@ -1,6 +1,6 @@
 import { ActorService } from './../service/actor.service';
 import { Actors } from './../model/actors.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./list-actor.component.css']
 })
 export class ListActorComponent implements OnInit {
-  actors?:Actors[];
+  @Input('data') actors?:Actors[] = [];
+  page: number = 1;
   actorService:ActorService;
   // instantiates the actor service
   constructor(actorService:ActorService, private router: Router) {

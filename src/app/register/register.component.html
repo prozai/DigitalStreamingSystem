@@ -1,46 +1,56 @@
 <div id="background">
     <div class="container">
-        <form class="form" [formGroup]="registerAdminForm" onsubmit="registerAdmin()" >
+        <form class="form" [formGroup]="registerAdminForm" onsubmit="registerAdmin()">
             <div class="flex-container">
                 <h1>Administrator Registration</h1>
             </div>
-            <div class="flex-container">
+            <div class="flex-container" > <!-- class="form-group" -->
                 <input type="hidden" formControlName="admin_id" required>
-                <input type="email" placeholder="Email@email.com" formControlName="email" required>
+                <input class="textarea" type="email" placeholder="Email@email.com" formControlName="email" required>
+                <!-- <span class="text-danger"
+                *ngIf="(registerAdminForm.controls['email'].touched || submitted) && registerAdminForm.controls['email'].errors?.required">
+                    
+                </span> -->
             </div>
             <div class="notEmpty" [hidden]="!registerAdminForm.controls['email'].errors?.['required']"
                 *ngIf="!email?.valid && (email?.touched && email?.dirty)">Email is required
             </div>
-            
+
             <div class="flex-container">
-                <input type="text" placeholder="Name" formControlName="name" required>
+                <input class="textarea" type="text" placeholder="Name" formControlName="name" required>
             </div>
             <div class="notEmpty" [hidden]="!registerAdminForm.controls['name'].errors?.['required']"
                 *ngIf="!name?.valid && (name?.touched && name?.dirty)">Name is required
             </div>
-            <div class=""
+            <div class="text-danger"
                 [hidden]="!registerAdminForm.controls['name'].errors?.['name'] && !registerAdminForm.controls['name'].errors?.['maxlength']"
                 *ngIf="!name?.valid && (name?.touched && name?.dirty)">Max Length for name
             </div>
             <div class="flex-container">
-                <input type="text" placeholder="User Name" formControlName="username" required>
+                <input class="textarea" type="text" placeholder="User Name" formControlName="username" required>
             </div>
             <div [hidden]="!registerAdminForm.controls['username'].errors?.['username'] && !registerAdminForm.controls['username'].errors?.['maxlength']"
                 *ngIf="!username?.valid && (username?.touched && username?.dirty)">Max Length for Username
             </div>
             <div class="flex-container">
-                <input type="password" placeholder="Password" formControlName="password" required>
+                <input class="textarea" type="password" placeholder="Password" formControlName="password" required>
             </div>
             <div [hidden]="!registerAdminForm.controls['password'].errors?.['password'] && !registerAdminForm.controls['password'].errors?.['maxlength']"
                 *ngIf="!password?.valid && (password?.touched && password?.dirty)">Password is
                 required</div>
             <div class="flex-container">
-                <input type="password" placeholder="Confirm Password" formControlName="confirmPassword" required>
+                <input class="textarea" type="password" placeholder="Confirm Password" formControlName="confirmPassword" required>
             </div>
+
             <div [hidden]="!registerAdminForm.controls['confirmPassword'].errors?.['confirmPassword'] && !registerAdminForm.controls['confirmPassword'].errors?.['maxlength']"
-                *ngIf="!confirmPassword?.valid && (confirmPassword?.touched && confirmPassword?.dirty)">Confirm Password is required</div>
+                *ngIf="!confirmPassword?.valid && (confirmPassword?.touched && confirmPassword?.dirty)">Confirm Password
+                is required</div>
+            <!-- <span class="text-danger"
+                *ngIf="registerAdminForm.confirmPassword.touched && registerAdminForm.confirmPassword.errors?.passwordMismatch">
+                Passwords doesnot match
+            </span> -->
             <div class="flex-container">
-                <button class="button" id="register" (click)="registerAdmin()" disabled="false">Register</button>
+                <button class="button" id="register" (click)="registerAdmin()">Register</button>
             </div>
         </form>
     </div>

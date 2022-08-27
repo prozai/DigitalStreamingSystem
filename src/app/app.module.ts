@@ -18,7 +18,7 @@ import { UpdateMovieReviewComponent } from './update-movie-review/update-movie-r
 import { AddMovieReviewComponent } from './add-movie-review/add-movie-review.component';
 import { SearchComponent } from './search/search.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { FilterPipe } from './shared/filter.pipe';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -36,7 +36,6 @@ import { FilterPipe } from './shared/filter.pipe';
     UpdateMovieReviewComponent,
     AddMovieReviewComponent,
     SearchComponent,
-    FilterPipe,
     
   ],
   imports: [
@@ -46,6 +45,7 @@ import { FilterPipe } from './shared/filter.pipe';
     ReactiveFormsModule,
     FormsModule,
     NgxPaginationModule,
+    Ng2SearchPipeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-dark navbar-expand-sm"  >
   <ul class="navbar-nav">
-    <input class="form-control" type="text" placeholder="Search" class="form-control" [(ngModel)]= "actor">
+    <input class="form-control" type="text" placeholder="Search" class="form-control" [(ngModel)]= "searchText">
   </ul>
 </nav>
 
@@ -21,7 +21,7 @@
         <tbody class="">
           <!-- angular takes care of DOM manipulation -->
           <!-- structural directive -->
-          <tr *ngFor="let actor of actors | filter: actor:'firstName'"> <!-- | filter:movie_title -->
+          <tr *ngFor="let actor of actors | filter: searchText"> 
            <!-- {{}} string interpolation-->
            <td>{{actor.actorId}}</td>
             <td>{{actor.firstName | uppercase}}</td>

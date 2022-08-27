@@ -11,7 +11,7 @@ import { ActorService } from '../service/actor.service';
 export class SearchComponent implements OnInit {
   actors:Actors[] = [];
   actorService:ActorService;
-  actor:any;
+  searchText:any;
   
   constructor(actorService:ActorService, private router: Router) { 
     this.actorService = actorService;

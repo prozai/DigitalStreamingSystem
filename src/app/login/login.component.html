@@ -2,15 +2,14 @@
     <div class="container">
         <!-- Reactive Form -->
         <form class="form" [formGroup]="loginForm">
-            <div class="container2">
                 <div class="flex-container">
-                    <h1>Login</h1>
+                    <h1>Digital Streaming System Administrator</h1>
                 </div>
                 <div class="flex-container">
-                    <input class="textarea" type="text" placeholder="Username" formControlName="loginid" value="test@test.com">
+                    <input class="textarea" type="text" placeholder="Username" formControlName="loginid" value="test@test.com" required>
                 </div>
                 <div class="flex-container">
-                    <input class="textarea" type="password" placeholder="Password" formControlName="password" value="password">
+                    <input class="textarea" type="password" placeholder="Password" formControlName="password" value="password" required>
                     <i class="bi bi-eye-slash" id="togglePassword"></i>
                 </div>
                 <div class="flex-container">
@@ -19,7 +18,6 @@
                 <div class="flex-container">
                     <button class="button" id="register" routerLink="/register">Create New Account</button>
                 </div>
-            </div>
         </form>
     </div>
 </div>
