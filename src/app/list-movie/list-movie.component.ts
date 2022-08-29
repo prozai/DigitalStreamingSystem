@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class ListMovieComponent implements OnInit {
   @Input('data') movies?: Movie[] = [];
   page: number = 1;
-  
+  searchText:any;
   movieService: MovieService;
   // movie_title:any;
   // instantiates the movie service

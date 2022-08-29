@@ -26,10 +26,14 @@
    </table>
 </div> -->
 <!-- <input class="form-control" type="text" placeholder="Search" aria-label="Search" [(ngModel)]="movie_title"> -->
-
+<nav class="navbar">
+   <ul class="navbar-nav">
+     <input class="form-control" type="text" placeholder="Search" class="form-control" [(ngModel)]= "searchText">
+   </ul>
+ </nav>
 <div class="container">
    <div class="album py-5 bg-dark" class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3" >
-      <div class="" *ngFor="let movie of movies | paginate: { itemsPerPage: 10, currentPage: page }" > <!--| filter:movie_title-->
+      <div class="" *ngFor="let movie of movies | filter: searchText | paginate: { itemsPerPage: 10, currentPage: page }" > <!--| filter:movie_title-->
          
          <div>
             <div class="col">
