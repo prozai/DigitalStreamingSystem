@@ -36,10 +36,13 @@ export class AddActorProfilePicComponent implements OnInit {
     this.actorService.createActor(this.addActor.value)
       .subscribe((data) => {
         console.log('Actor data saved ', data)
+        this.navhome();
       })
-    // navigate to edit movie component
+  }
+  navhome() {
     this.router.navigate(['/actors']);
   }
+  
   onFileSelected(event) {
     // this.imagePath = this._sanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,'
     // + toReturnImage.base64string)

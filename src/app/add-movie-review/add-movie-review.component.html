@@ -1,32 +1,40 @@
 <h2>Add Movie Review</h2> <br><br>
 <!-- Template driven forms -->
-    <form [formGroup]="addMovieReview" >
-        <div>
-            <div class="form-group">
-                <!-- <label for="id">Review Id :</label> -->
-                <input  type="hidden" id="review_id" name="review_id" class="form-control"  formControlName="review_id"><br>
-            </div>
-            <div class="form-group">
-                <label for="Title">Date :</label>
-                <input type="text" id="name" name="title" class="form-control" formControlName="date_posted"><br><br>
-            </div>
-            <div class="form-group">
-                <label for="Cost">Description :</label>
-                <input type="text" id="description" name="description" class="form-control" formControlName="description"><br><br>
-            </div>
-            <div class="form-group">
-                <label for="Rating">Rating :</label>
-                <input type="text" id="rating" name="rating" class="form-control" formControlName="rating"><br><br>
-            </div>
-            <div class="form-group">
-                <!-- <label for="movie_id">movie_id :</label> -->
-                <input  type="hidden" id="movie_id" name="movie_id" class="form-control" formControlName="movie_id"><br><br>
-            </div>
+<form [formGroup]="addMovieReview">
+    <div>
+        <div class="form-group">
+            <!-- <label for="id">Review Id :</label> -->
+            <input type="hidden" id="review_id" name="review_id" class="form-control" formControlName="review_id"><br>
         </div>
-        <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-        <!-- event binding (click) -->
-        <button (click)="saveMovieReview()" class="btn btn-success" class="btn btn-warning">Save</button>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="reset" class="btn btn-info">Clear</button>
-        <br><br>
-    </form>
+        <div class="form-group">
+            <label for="Title">Date :</label>
+            <input type="text" id="name" name="title" class="form-control" formControlName="date_posted"><br><br>
+        </div>
+        <div class="form-group">
+            <label for="Cost">Description :</label>
+            <input type="text" id="description" name="description" class="form-control"
+                formControlName="description"><br><br>
+        </div>
+        <div class="form-group">
+            <label for="Rating">Rating :</label>
+            <input type="text" id="rating" name="rating" class="form-control" formControlName="rating"><br><br>
+        </div>
+        <label for="movie_id">Movie</label>
+        <select class="form-select mb-3" formControlName="movie_id" id="movie_id" class="form-control">
+            <option *ngFor="let movie of movies" [ngValue]="movie.movie_id">
+                {{movie.movie_id}}: {{movie.title}} 
+            </option>
+        </select>
+        <div class="form-group">
+            <!-- <label for="movie_id">movie_id :</label> -->
+            <input type="hidden" id="movie_id" name="movie_id" class="form-control" formControlName="movie_id"><br><br>
+        </div>
+        
+    </div>
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <!-- event binding (click) -->
+    <button (click)="saveMovieReview()" class="btn btn-success" class="btn btn-warning">Save</button>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="reset" class="btn btn-info">Clear</button>
+    <br><br>
+</form>

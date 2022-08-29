@@ -1,3 +1,5 @@
+import { MovieService } from './../service/movie.service';
+import { Movie } from './../model/movie.model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -10,10 +12,13 @@ import { MovieReviewService } from '../service/movieReview.service';
 })
 export class AddMovieReviewComponent implements OnInit {
   addMovieReview?: FormGroup;
-
-  constructor(private formBuilder:FormBuilder, private movieReviewService:MovieReviewService, private router:Router) { }
+  movies:Movie[];
+  constructor(private formBuilder:FormBuilder, private movieReviewService:MovieReviewService, private router:Router, private movieService:MovieService) { }
 
   ngOnInit(): void {
+    this.movieService.getMovies().subscribe(
+      (movieData) => { this.movies = movieData }
+    );
     this.addMovieReview = this.formBuilder.group({
       review_id : [0],
       date_posted : [],
@@ -28,8 +33,11 @@ export class AddMovieReviewComponent implements OnInit {
     this.movieReviewService.createMovieReview(this.addMovieReview.value)
     .subscribe((data) => {
       console.log('data saved ', data)
+      this.navhome();
     })
-    // navigate to movie review list component
+    
+  }
+  navhome(){
     this.router.navigate(['/movie-reviews']);
   }
 }
