@@ -1,56 +1,86 @@
 <div id="background">
     <div class="container">
-        <form class="form" [formGroup]="registerAdminForm" onsubmit="registerAdmin()">
+        <form class="form" [formGroup]="registerAdminForm" (ngSubmit)="onSubmit()">
             <div class="flex-container">
                 <h1>Administrator Registration</h1>
             </div>
-            <div class="flex-container" > <!-- class="form-group" -->
-                <input type="hidden" formControlName="admin_id" required>
-                <input class="textarea" type="email" placeholder="Email@email.com" formControlName="email" required>
-                <!-- <span class="text-danger"
-                *ngIf="(registerAdminForm.controls['email'].touched || submitted) && registerAdminForm.controls['email'].errors?.required">
-                    
-                </span> -->
-            </div>
-            <div class="notEmpty" [hidden]="!registerAdminForm.controls['email'].errors?.['required']"
-                *ngIf="!email?.valid && (email?.touched && email?.dirty)">Email is required
-            </div>
+            <div class="flex-container">
+                <div class="flex-container">
+                    <div class="form-group">
+                        <input type="hidden" formControlName="admin_id" />
+                        <input class="textarea" type="email" placeholder="Email@email.com" formControlName="email"
+                            [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
+                        <div class="notEmpty" [hidden]="!registerAdminForm.controls['email'].errors?.['required']"
+                            *ngIf="!email?.valid && (email?.touched && email?.dirty)">Email is required
+                        </div>
+                        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                            <div *ngIf="f['email'].errors?.['email']">Email must be a valid email address</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-container">
+                    <div class="form-group">
+                        <input class="textarea" type="text" placeholder="Name" formControlName="name"
+                            [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" />
+                        <div class="notEmpty" [hidden]="!registerAdminForm.controls['name'].errors?.['required']"
+                            *ngIf="!name?.valid && (name?.touched && name?.dirty)">Name is required
+                        </div>
+                        <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                            <div *ngIf="f['name'].errors?.['minlength']">Name must be at least 6 characters</div>
+                            <div *ngIf="f['name'].errors?.['maxlength']">Name has a maximum of 20 characters</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-container">
+                    <div class="form-group">
+                        <input class="textarea" type="text" placeholder="91234567" formControlName="phone"
+                            [ngClass]="{ 'is-invalid': submitted && f['phone'].errors }" />
+                        <div class="notEmpty" [hidden]="!registerAdminForm.controls['phone'].errors?.['required']"
+                            *ngIf="!phone?.valid && (phone?.touched && phone?.dirty)">Phone is required
+                        </div>
+                        <div *ngIf="submitted && f['phone'].errors" class="invalid-feedback">
+                            <div *ngIf="f['phone'].errors?.['minlength']">Phone must be 8 digits</div>
+                            <div *ngIf="f['phone'].errors?.['maxlength']">Phone must be 8 digits</div>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="flex-container">
-                <input class="textarea" type="text" placeholder="Name" formControlName="name" required>
-            </div>
-            <div class="notEmpty" [hidden]="!registerAdminForm.controls['name'].errors?.['required']"
-                *ngIf="!name?.valid && (name?.touched && name?.dirty)">Name is required
-            </div>
-            <div class="text-danger"
-                [hidden]="!registerAdminForm.controls['name'].errors?.['name'] && !registerAdminForm.controls['name'].errors?.['maxlength']"
-                *ngIf="!name?.valid && (name?.touched && name?.dirty)">Max Length for name
-            </div>
-            <div class="flex-container">
-                <input class="textarea" type="text" placeholder="User Name" formControlName="username" required>
-            </div>
-            <div [hidden]="!registerAdminForm.controls['username'].errors?.['username'] && !registerAdminForm.controls['username'].errors?.['maxlength']"
-                *ngIf="!username?.valid && (username?.touched && username?.dirty)">Max Length for Username
-            </div>
-            <div class="flex-container">
-                <input class="textarea" type="password" placeholder="Password" formControlName="password" required>
-            </div>
-            <div [hidden]="!registerAdminForm.controls['password'].errors?.['password'] && !registerAdminForm.controls['password'].errors?.['maxlength']"
-                *ngIf="!password?.valid && (password?.touched && password?.dirty)">Password is
-                required</div>
-            <div class="flex-container">
-                <input class="textarea" type="password" placeholder="Confirm Password" formControlName="confirmPassword" required>
-            </div>
+                <div class="flex-container">
+                    <div class="form-group">
+                        <input class="textarea" type="text" placeholder="User Name" formControlName="username"
+                            [ngClass]="{ 'is-invalid': submitted && f['username'].errors }" />
+                        <div class="notEmpty" [hidden]="!registerAdminForm.controls['username'].errors?.['required']"
+                            *ngIf="!username?.valid && (username?.touched && username?.dirty)">Username is required
+                        </div>
+                        <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
+                            <div *ngIf="f['username'].errors?.['required']">Username is required</div>
+                            <div *ngIf="f['username'].errors?.['minlength']">Username must be at least 6 characters
+                            </div>
+                            <div *ngIf="f['username'].errors?.['maxlength']">Username has a maximum of 20 characters
+                            </div>
+                        </div>
+                    </div>
 
-            <div [hidden]="!registerAdminForm.controls['confirmPassword'].errors?.['confirmPassword'] && !registerAdminForm.controls['confirmPassword'].errors?.['maxlength']"
-                *ngIf="!confirmPassword?.valid && (confirmPassword?.touched && confirmPassword?.dirty)">Confirm Password
-                is required</div>
-            <!-- <span class="text-danger"
-                *ngIf="registerAdminForm.confirmPassword.touched && registerAdminForm.confirmPassword.errors?.passwordMismatch">
-                Passwords doesnot match
-            </span> -->
-            <div class="flex-container">
-                <button class="button" id="register" (click)="registerAdmin()">Register</button>
+                </div>
+
+                <div class="flex-container">
+                    <div class="form-group">
+                        <input class="textarea" type="password" placeholder="Password" formControlName="password"
+                            [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+                        <div class="notEmpty" [hidden]="!registerAdminForm.controls['password'].errors?.['required']"
+                            *ngIf="!password?.valid && (password?.touched && password?.dirty)">Password is required
+                        </div>
+                        <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                            <div *ngIf="f['password'].errors?.['required']">Password is required</div>
+                            <div *ngIf="f['password'].errors?.['minlength']">Password must be at least 6 characters
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-container">
+                    <button class="button" id="register">Register</button>
+                </div>
             </div>
         </form>
     </div>

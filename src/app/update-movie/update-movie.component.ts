@@ -1,3 +1,4 @@
+import { Actors } from './../model/actors.model';
 import { MovieService } from './../service/movie.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,6 +12,8 @@ import { Movie } from '../model/movie.model';
 export class UpdateMovieComponent implements OnInit {
   movie_id:number;
   movie:Movie;
+  actor_id:number;
+  actor:Actors;
   constructor(private movieService:MovieService, private route:ActivatedRoute, private router:Router) { }
 
   ngOnInit(): void {

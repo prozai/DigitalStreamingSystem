@@ -19,6 +19,9 @@ import { AddMovieReviewComponent } from './add-movie-review/add-movie-review.com
 import { SearchComponent } from './search/search.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ListActorProfilePicComponent } from './list-actor-profile-pic/list-actor-profile-pic.component';
+import { AddActorProfilePicComponent } from './add-actor-profile-pic/add-actor-profile-pic.component';
+import { DndDirective } from './directives/dnd.directive';
 
 
 @NgModule({
@@ -36,6 +39,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     UpdateMovieReviewComponent,
     AddMovieReviewComponent,
     SearchComponent,
+    ListActorProfilePicComponent,
+    AddActorProfilePicComponent,
+    DndDirective,
     
   ],
   imports: [

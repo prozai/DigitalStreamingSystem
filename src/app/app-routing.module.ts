@@ -1,3 +1,4 @@
+import { AddActorProfilePicComponent } from './add-actor-profile-pic/add-actor-profile-pic.component';
 import { SearchComponent } from './search/search.component';
 import { ListActorComponent } from './list-actor/list-actor.component';
 import { AddMovieComponent } from './add-movie/add-movie.component';
@@ -38,7 +39,8 @@ const routes : Routes = [
     {path: 'add-actor', component: AddActorComponent, canActivate: [AuthGuardService]},
     // navigate to update actor component if user is logged in
     {path: 'update-actor/:id', component: UpdateActorComponent, canActivate: [AuthGuardService]},
-
+    // testing component
+    {path:'add-actor-profile-pic', component: AddActorProfilePicComponent},
     // ========================Movie Review=========================
 
     // navigate list movie reviews component if user is logged in

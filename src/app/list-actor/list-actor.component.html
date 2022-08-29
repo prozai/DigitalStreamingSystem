@@ -1,4 +1,4 @@
-<!-- <div class="container">
+<div class="container">
     <h1>You are viewing Actor list</h1>
     <table class="table-striped">
         <thead>
@@ -16,17 +16,17 @@
           
           <tr *ngFor="let actor of actors">
            
-           <td>{{actor.actorId}}</td>
+           <td>{{actor.actor_Id}}</td>
             <td>{{actor.firstName}}</td>
             <td>{{actor.lastName }}</td>
             <td>{{actor.gender }}</td>
             <td>{{actor.age }}</td>
-            <td><button class="editBtn" (click)="updateActor(actor.actorId)">Edit</button></td>
+            <td><button class="editBtn" (click)="updateActor(actor.actor_Id)">Edit</button></td>
             <td><button class="deleteBtn" (click)="deleteActor(actor)">Delete</button></td>
           </tr>
         </tbody>
      </table>
-</div> -->
+</div>
 
 <div class="container">
    <div class="album py-5 bg-dark" class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3" >
@@ -38,7 +38,7 @@
             <div class="col">
                <div class="card shadow-sm" >
                   <svg class="bd-placeholder-img card-img-top" width="100%" height="225" role="img"
-                     aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false" (click)="updateActor(actor.actorId)">
+                     aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false" (click)="updateActor(actor.actor_Id)">
                      <title>{{actor.firstName}}</title>
                      <rect width="100%" height="100%" fill="#55595c" />
                      <a src="../assets/images/hehe.jpg"></a>
@@ -53,7 +53,7 @@
                         <div class="btn-group">
                            <button class="btn" (click)="deleteActor(actor)">Delete</button>
                         </div>
-                        <small class="text-muted">{{actor.actorId}}</small>
+                        <small class="text-muted">{{actor.actor_Id}}</small>
                      </div>
                   </div>
                </div>

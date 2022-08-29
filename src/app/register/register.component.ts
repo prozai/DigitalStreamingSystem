@@ -11,19 +11,26 @@ import { CustomvalidationService } from '../service/customvalidation.service';
 })
 export class RegisterComponent implements OnInit {
   registerAdminForm?: FormGroup;
+  submitted = false;
   constructor(private router:Router, 
     private formBuilder:FormBuilder, 
-    private registerService:RegisterService,
-    private customValidator: CustomvalidationService) { }
+    private registerService:RegisterService
+    ) { }
 
   ngOnInit(): void {
+    const emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+    const phonePattern = "^[0-9]{8}$";
+    const namePattern = "^[a-zA-Z ]{6, 20}$";
+    const usernamePattern = "^[a-zA-Z0-9]{6, 20}$";
+    const passwordPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})";
     this.registerAdminForm = this.formBuilder.group({
       admin_id:[0],
-      email:['', [Validators.required, Validators.email]],
-      name:['', Validators.required],
-      username:['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
-      password:['', Validators.compose([Validators.required, this.customValidator.patternValidator()])],
-      confirmPassword:['',[Validators.required, Validators.minLength(6), Validators.maxLength(20)], this.confirmPasswordValidator],
+      email:['test1@test.com', [Validators.required, Validators.email,Validators.pattern(emailPattern)]],
+      name:['test123', [Validators.required, Validators.minLength(6), Validators.maxLength(20), Validators.pattern(namePattern)]],
+      phone: ['91234567', [Validators.required, Validators.minLength(8),Validators.maxLength(8), Validators.pattern(phonePattern)]],
+      username:['test123', [Validators.required, Validators.minLength(6), Validators.maxLength(20), Validators.pattern(usernamePattern)]],
+      password:['password', [Validators.required, Validators.minLength(6), Validators.pattern(passwordPattern)]],
+      
   });
 }
 get email(){
@@ -32,8 +39,8 @@ get email(){
 get password(){
   return this.registerAdminForm.get('password');
 }
-get confirmPassword(){
-  return this.registerAdminForm.get('confirmPassword');
+get phone(){
+  return this.registerAdminForm.get('phone');
 }
 get name(){
   return this.registerAdminForm.get('name');
@@ -41,20 +48,15 @@ get name(){
 get username(){
   return this.registerAdminForm.get('username');
 }
+get f() { return this.registerAdminForm.controls; }
 
-confirmPasswordValidator(control:FormGroup){
-  const password = control.get('password');
-  const confirmPassword = control.get('confirmPassword');
-  if(password.value !== confirmPassword.value){
-    console.log("Password mismatch");
-    return {
-      mismatch:true
+onSubmit(){
+    this.submitted = true;
+    console.log(this.registerAdminForm.errors)
+    // stop here if form is invalid
+    if (this.registerAdminForm.invalid) {
+      return;
     }
-  }
-  return false;
-}
-
-registerAdmin(){
     console.log("Registering admin");
     console.log(this.registerAdminForm.value);
     this.registerService.createAdmin(this.registerAdminForm.value)

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actors } from '../model/actors.model';
 import { ActorService } from '../service/actor.service';
@@ -9,13 +9,12 @@ import { ActorService } from '../service/actor.service';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  actors:Actors[] = [];
+  @Input('data')actors:Actors[] = [];
   actorService:ActorService;
   searchText:any;
-  
+  page: number = 1;
   constructor(actorService:ActorService, private router: Router) { 
     this.actorService = actorService;
-    
   }
 
   ngOnInit(): void {
@@ -23,14 +22,14 @@ export class SearchComponent implements OnInit {
       (actorData) => { this.actors = actorData }
     );
   }
-  updateActor(actorId:number): void{
-    console.log("Updating actor with id: "+actorId);
-    this.router.navigate(['update-actor', actorId]);
+  updateActor(actor_id:number): void{
+    console.log("Updating actor with id: "+actor_id);
+    this.router.navigate(['update-actor', actor_id]);
   }
 
   deleteActor(toDeleteActor: Actors): void{
     console.log("Deleting actor");
-    this.actorService.deleteActor(toDeleteActor.actorId).subscribe(
+    this.actorService.deleteActor(toDeleteActor.actor_Id).subscribe(
       (data) => {
         // remove from array
         this.actors = this.actors.filter((actor) => actor != toDeleteActor)

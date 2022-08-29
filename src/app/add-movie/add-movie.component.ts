@@ -1,8 +1,10 @@
+import { ActorService } from './../service/actor.service';
 import { MovieService } from './../service/movie.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Movie } from '../model/movie.model';
 import { Router } from '@angular/router';
+import { Actors } from '../model/actors.model';
 
 @Component({
   selector: 'app-add-movie',
@@ -11,14 +13,19 @@ import { Router } from '@angular/router';
 })
 export class AddMovieComponent implements OnInit {
   addMovie? : FormGroup;
-  constructor(private formBuilder:FormBuilder, private movieService:MovieService, private router:Router) { }
+  actors:Actors[];
+  constructor(private formBuilder:FormBuilder, private movieService:MovieService, private router:Router, private actorService:ActorService) { }
 
   ngOnInit(): void {
+    this.actorService.getActors().subscribe(
+      (actorData) => { this.actors = actorData }
+    );
     this.addMovie = this.formBuilder.group({
       movie_id : [0],
       title:[],
       cost:[],
-      year:[]
+      year:[],
+      actor_id:[],
      });
   }
   saveMovie(){
@@ -27,8 +34,12 @@ export class AddMovieComponent implements OnInit {
     this.movieService.createMovie(this.addMovie.value)
     .subscribe((data) => {
      console.log('data saved ', data)
+     this.navhome();
     })
   // navigate to movie list component
-  this.router.navigate(['/movies']);
+  
+  }
+  navhome(){
+    this.router.navigate(['/movies']);
   }
 }

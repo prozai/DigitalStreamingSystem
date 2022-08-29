@@ -30,4 +30,8 @@ export class ActorService {
   deleteActor(id: number) {
     return this.httpClient.delete<Actors>(this.baseUrl + "/" + id);
   }
+  uploadActorProfilePic(file: File) {
+    // this.httpClient.headers.append('Content-Type', 'multipart/form-data');
+    return this.httpClient.post("http://localhost:8080/api/actor/thumbnail",file);
+  }
 }

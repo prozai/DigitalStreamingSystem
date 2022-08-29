@@ -21,7 +21,7 @@
         <tbody class="">
           <!-- angular takes care of DOM manipulation -->
           <!-- structural directive -->
-          <tr *ngFor="let actor of actors | filter: searchText"> 
+          <tr *ngFor="let actor of actors | filter: searchText | paginate: { itemsPerPage: 10, currentPage: page }"> 
            <!-- {{}} string interpolation-->
            <td>{{actor.actorId}}</td>
             <td>{{actor.firstName | uppercase}}</td>
@@ -33,4 +33,7 @@
           </tr>
         </tbody>
      </table>
+</div>
+<div class="has-text-centered">
+  <pagination-controls class="my-pagination" (pageChange)="page = $event"></pagination-controls>
 </div>

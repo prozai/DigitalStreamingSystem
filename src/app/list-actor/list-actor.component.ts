@@ -30,7 +30,7 @@ export class ListActorComponent implements OnInit {
 
   deleteActor(toDeleteActor: Actors): void{
     console.log("Deleting actor");
-    this.actorService.deleteActor(toDeleteActor.actorId).subscribe(
+    this.actorService.deleteActor(toDeleteActor.actor_Id).subscribe(
       (data) => {
         // remove from array
         this.actors = this.actors.filter((actor) => actor != toDeleteActor)

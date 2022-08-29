@@ -1,5 +1,5 @@
 export class Actors{
-    actorId?: number;
+    actor_Id?: number;
     firstName?: string;
     lastName?: string;
     gender?: string;
