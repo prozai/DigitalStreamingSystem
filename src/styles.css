@@ -19,6 +19,7 @@ textarea:focus {
     border-color: rgb(162, 65, 165);
     box-shadow: 0 0 10px rgb(162, 65, 165);
 }
+
 /* Desktop Screen */
 @media only screen and (min-width: 1080px) {
     div {
@@ -56,10 +57,7 @@ textarea:focus {
     }
 
     form {
-        max-width: 90%;
-        padding-left: 5%;
-        padding-right: 5%;
-
+        max-width: 100%;
     }
     .textarea{
         padding-left: 5px;
@@ -124,9 +122,9 @@ textarea:focus {
 } 
 
 /* Landscape tablet */
-/* @media only screen and (min-width: 768px) {
+@media only screen and (min-width: 768px ) and (max-width: 1079px) {
     div {
-        border: 1px solid black;
+        /* border: 1px solid black; */
     }
 
     #background {
@@ -180,13 +178,13 @@ textarea:focus {
     }
 }
 /* Portrait Tablet */
-/* @media only screen and (min-width: 600px) {
+@media only screen and (min-width: 600px) and (max-width: 767px) {
     div {
        
     }
 
     #background {
-        background-color: grey;
+        background-color: white;
 
     }
 
@@ -287,10 +285,10 @@ textarea:focus {
         padding-top: 10px;
         padding-bottom: 10px;
     }
-} */
+}
 
 /* Mobile screen */
-/*@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
     div {
        
     }
@@ -397,4 +395,4 @@ textarea:focus {
         padding-top: 10px;
         padding-bottom: 10px;
     }
-}*/
+}

@@ -32,6 +32,10 @@ export class UpdateMovieComponent implements OnInit {
     this.movieService.updateMovie(this.movie_id,this.movie)
     .subscribe(data => console.log(data), error => console.log(error));
     this.movie = new Movie();
+    this.navhome();
+  }
+
+  navhome(){
     this.router.navigate(['/movies']);
   }
 }

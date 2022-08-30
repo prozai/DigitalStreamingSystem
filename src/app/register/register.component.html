@@ -1,6 +1,6 @@
 <div id="background">
     <div class="container">
-        <form class="form" [formGroup]="registerAdminForm" (ngSubmit)="onSubmit()">
+        <form class="form" [formGroup]="registerAdminForm" >
             <div class="flex-container">
                 <h1>Administrator Registration</h1>
             </div>
@@ -15,6 +15,7 @@
                         </div>
                         <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
                             <div *ngIf="f['email'].errors?.['email']">Email must be a valid email address</div>
+                            <div *ngIf="f['email'].errors?.['pattern']">Email must be a valid email address</div>
                         </div>
                     </div>
                 </div>
@@ -28,6 +29,7 @@
                         <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
                             <div *ngIf="f['name'].errors?.['minlength']">Name must be at least 6 characters</div>
                             <div *ngIf="f['name'].errors?.['maxlength']">Name has a maximum of 20 characters</div>
+                            <div *ngIf="f['name'].errors?.['pattern']">Name must be in alphabets</div>
                         </div>
                     </div>
                 </div>
@@ -41,6 +43,7 @@
                         <div *ngIf="submitted && f['phone'].errors" class="invalid-feedback">
                             <div *ngIf="f['phone'].errors?.['minlength']">Phone must be 8 digits</div>
                             <div *ngIf="f['phone'].errors?.['maxlength']">Phone must be 8 digits</div>
+                            <div *ngIf="f['phone'].errors?.['pattern']">Is that a valid phone number?</div>
                         </div>
                     </div>
                 </div>
@@ -53,11 +56,9 @@
                             *ngIf="!username?.valid && (username?.touched && username?.dirty)">Username is required
                         </div>
                         <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
-                            <div *ngIf="f['username'].errors?.['required']">Username is required</div>
-                            <div *ngIf="f['username'].errors?.['minlength']">Username must be at least 6 characters
-                            </div>
-                            <div *ngIf="f['username'].errors?.['maxlength']">Username has a maximum of 20 characters
-                            </div>
+                            <div *ngIf="f['username'].errors?.['minlength']">Username must be at least 6 characters</div>
+                            <div *ngIf="f['username'].errors?.['maxlength']">Username has a maximum of 20 characters</div>
+                            <div *ngIf="f['username'].errors?.['pattern']">Username must be in aphanumerics</div>
                         </div>
                     </div>
 
@@ -71,15 +72,14 @@
                             *ngIf="!password?.valid && (password?.touched && password?.dirty)">Password is required
                         </div>
                         <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
-                            <div *ngIf="f['password'].errors?.['required']">Password is required</div>
-                            <div *ngIf="f['password'].errors?.['minlength']">Password must be at least 6 characters
-                            </div>
+                            <div *ngIf="f['password'].errors?.['minlength']">Password must be at least 6 characters</div>
+                            <div *ngIf="f['password'].errors?.['pattern']">Password must contain at least </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="flex-container">
-                    <button class="button" id="register">Register</button>
+                    <button class="button" id="register" (click)="onSubmit()">Register</button>
                 </div>
             </div>
         </form>

@@ -4,4 +4,5 @@ export class Movie{
     title?: string;
     cost?: number;
     year?: number;
+    thumbnail?: string;
 }

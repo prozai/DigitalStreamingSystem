@@ -26,6 +26,7 @@ export class AddMovieComponent implements OnInit {
       cost:[],
       year:[],
       actor_id:[],
+      thumbnail:[]
      });
   }
   saveMovie(){
@@ -40,6 +41,6 @@ export class AddMovieComponent implements OnInit {
   
   }
   navhome(){
-    this.router.navigate(['/movies']);
+    this.router.navigate(['/add-movies']);
   }
 }

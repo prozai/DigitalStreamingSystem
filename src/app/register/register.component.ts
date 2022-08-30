@@ -18,18 +18,26 @@ export class RegisterComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    const emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
-    const phonePattern = "^[0-9]{8}$";
-    const namePattern = "^[a-zA-Z ]{6, 20}$";
-    const usernamePattern = "^[a-zA-Z0-9]{6, 20}$";
-    const passwordPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})";
+    const emailPattern = "";
+    const phonePattern = "";
+    const namePattern = "";
+    const usernamePattern = "";
+    const passwordPattern = "";
+
     this.registerAdminForm = this.formBuilder.group({
       admin_id:[0],
-      email:['test1@test.com', [Validators.required, Validators.email,Validators.pattern(emailPattern)]],
-      name:['test123', [Validators.required, Validators.minLength(6), Validators.maxLength(20), Validators.pattern(namePattern)]],
-      phone: ['91234567', [Validators.required, Validators.minLength(8),Validators.maxLength(8), Validators.pattern(phonePattern)]],
-      username:['test123', [Validators.required, Validators.minLength(6), Validators.maxLength(20), Validators.pattern(usernamePattern)]],
-      password:['password', [Validators.required, Validators.minLength(6), Validators.pattern(passwordPattern)]],
+      email:['test1@test.com', [Validators.required, Validators.email,Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]],
+      name:['testtest', [Validators.required, Validators.minLength(6), Validators.maxLength(20), Validators.pattern(/^[a-zA-Z]$/)]],
+      phone: ['91234567', [Validators.required, Validators.minLength(8),Validators.maxLength(8), Validators.pattern(/^[0-9]{8}$/)]],
+      username:['test123', [Validators.required, Validators.minLength(6), Validators.maxLength(20), Validators.pattern(/^[a-zA-Z0-9]{6, 20}$/)]],
+      password:['password!1A', [Validators.required, Validators.minLength(6), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/)]],
+
+      // admin_id:[0],
+      // email:['test1@test.com'],
+      // name:['testtest'],
+      // phone: ['91234567'],
+      // username:['test123'],
+      // password:['password123!'],
       
   });
 }
@@ -52,18 +60,21 @@ get f() { return this.registerAdminForm.controls; }
 
 onSubmit(){
     this.submitted = true;
+    console.log(this.registerAdminForm.value);
     console.log(this.registerAdminForm.errors)
     // stop here if form is invalid
     if (this.registerAdminForm.invalid) {
+      console.log("inside invalid: "+this.registerAdminForm.value);
       return;
+    }else if(this.registerAdminForm.valid){
+      console.log("Registering admin");
+      console.log(this.registerAdminForm.value);
+      this.registerService.createAdmin(this.registerAdminForm.value)
+      .subscribe((data) => {
+        console.log('Admin Data Saved',data)
+      })
+      sessionStorage.setItem("loggedIn", 'yes');
+      this.router.navigate(['movies']);
     }
-    console.log("Registering admin");
-    console.log(this.registerAdminForm.value);
-    this.registerService.createAdmin(this.registerAdminForm.value)
-    .subscribe((data) => {
-      console.log('Admin Data Saved',data)
-    })
-    sessionStorage.setItem("loggedIn", 'yes');
-    this.router.navigate(['movies']);
   }
 }

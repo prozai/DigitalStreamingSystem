@@ -23,12 +23,12 @@
           <!-- structural directive -->
           <tr *ngFor="let actor of actors | filter: searchText | paginate: { itemsPerPage: 10, currentPage: page }"> 
            <!-- {{}} string interpolation-->
-           <td>{{actor.actorId}}</td>
+           <td>{{actor.actor_Id}}</td>
             <td>{{actor.firstName | uppercase}}</td>
             <td>{{actor.lastName  | uppercase}}</td>
             <td>{{actor.gender }}</td>
             <td>{{actor.age }}</td>
-            <td><button class="editBtn" (click)="updateActor(actor.actorId)">Edit</button></td>
+            <td><button class="editBtn" (click)="updateActor(actor.actor_Id)">Edit</button></td>
             <td><button class="deleteBtn" (click)="deleteActor(actor)">Delete</button></td>
           </tr>
         </tbody>
