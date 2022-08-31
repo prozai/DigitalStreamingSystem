@@ -2,6 +2,8 @@ import { MovieReview } from './../model/movieReview.model';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MovieReviewService } from '../service/movieReview.service';
+import { Movie } from '../model/movie.model';
+import { MovieService } from '../service/movie.service';
 
 @Component({
   selector: 'app-update-movie-review',
@@ -11,9 +13,17 @@ import { MovieReviewService } from '../service/movieReview.service';
 export class UpdateMovieReviewComponent implements OnInit {
   review_id:number;
   movieReview:MovieReview;
-  constructor(private movieReviewService:MovieReviewService, private route:ActivatedRoute, private router:Router) { }
+  movies : Movie[];
+  constructor(
+    private movieReviewService:MovieReviewService, 
+    private route:ActivatedRoute, 
+    private router:Router,
+    private movieService:MovieService) { }
 
   ngOnInit(): void {
+    this.movieService.getMovies().subscribe(
+      (movieData) => { this.movies = movieData }
+    );
     this.review_id = this.route.snapshot.params['id'];
     console.log(this.review_id);
     this.movieReview = new MovieReview();

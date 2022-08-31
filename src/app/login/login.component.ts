@@ -2,7 +2,7 @@ import { AuthenticateAdminService } from './../service/authenticate-admin.servic
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LogIn } from '../model/LogIn';
+
 
 // Decorator / selector, templateUrl, css
 @Component({
@@ -14,17 +14,19 @@ import { LogIn } from '../model/LogIn';
 export class LoginComponent implements OnInit {
   // loginForm  needs initialization is a FormGroup 
   loginForm: FormGroup;
-
+  submitted = false;
   constructor(private formBuilder: FormBuilder, private router: Router, private authenticateAdminService:AuthenticateAdminService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      loginid: ['test@test.com', [Validators.email, Validators.required]],
-      password: ['password', [Validators.required]]
+      loginid: ['test1@test.com', [Validators.email, Validators.required, Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]],
+      password: ['password!1A', [Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/)]]
     })
   }
 
+  get f() { return this.loginForm.controls; }
   onSubmit() {
+    this.submitted = true;
     console.log("Authenticating :");
     console.log(this.loginForm.value);
 
@@ -32,10 +34,16 @@ export class LoginComponent implements OnInit {
     const password: string = this.loginForm.controls['password'].value;
     let authorised: Boolean;
 
+    if (this.loginForm.invalid) {
+      console.log("Invalid form");
+      return;
+    }
+
     if (this.loginForm.valid) {
+      
       this.authenticateAdminService.authenticateAdmin(loginid, password).subscribe(
         (adminAuthenticationStatus) => {
-          // console.log("Admin authentication status: ", adminAuthenticationStatus);
+          console.log("Admin authentication status: ", adminAuthenticationStatus);
           authorised = adminAuthenticationStatus;
           if (authorised) {
             sessionStorage.setItem("loggedIn", 'yes');

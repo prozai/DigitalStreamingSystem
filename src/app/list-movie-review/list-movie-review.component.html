@@ -33,7 +33,7 @@
         <input class="form-control" type="text" placeholder="Search For Movie" class="form-control" [(ngModel)]= "searchText">
       </ul>
     </nav>
-   <div class="album py-5 bg-dark" class="row row-cols-1 row-cols-sm-2 row-cols-md-1 g-3" >
+   <div class="album py-5 bg-dark" class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3" >
       <!-- angular takes care of DOM manipulation -->
       <!-- structural directive -->
       <div id="thumbnail" class="" *ngFor="let review of movieReview |filter: searchText | paginate: { itemsPerPage: 8, currentPage: page }" > <!--| filter:movie_title-->
@@ -41,12 +41,12 @@
          <div>
             <div class="col">
                <div class="card shadow-sm" >
-                  <img class="bd-placeholder-img card-img-top rounded img-thumbnail" width="100%" height="100%" role="img" src="{{getMovieImg(review.movie_id)}}" alt="{{review.review_id}}"
+                  <img class="bd-placeholder-img card-img-top rounded img-thumbnail" width="20%" height="20%" role="img" src="{{getMovieImg(review.movie_id)}}" alt="{{review.review_id}}"
                   aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false" (click)="updateMovieReview(review.review_id)"/>
                   <div class="card-body">
-                     <p class="card-text">{{review.rating }}</p>
+                     <p class="card-text">{{review.rating}} &#9733; rating</p>
                      <p class="card-text">{{review.date_posted}}</p>
-                     <p class="card-text">{{review.description}}</p>
+                     <!-- <p class="card-text">{{review.description}}</p> -->
                      <div class="d-flex justify-content-between ;align-items-center">
                         <div class="btn-group">
                            <button class="btn" (click)="deleteMovieReview(review)">Delete</button>

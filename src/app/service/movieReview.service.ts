@@ -21,7 +21,7 @@ export class MovieReviewService {
     }
     // delete movie review
     deleteMovieReview(id: number) {;
-        return this.httpClient.delete<MovieReview>(this.baseUrl + "/review/" + id);
+        return this.httpClient.delete<MovieReview>(this.baseUrl + "/" + id);
     }
     // add movie review
     createMovieReview(movieReview: MovieReview) {
@@ -31,6 +31,6 @@ export class MovieReviewService {
     // update movie review
     updateMovieReview(id: number, movieReview:any): Observable<Object> {
         // put : update a movie review record
-        return this.httpClient.put(`${this.baseUrl}/review/${id}`, movieReview);
+        return this.httpClient.put(`${this.baseUrl}/${id}`, movieReview);
     }
 }

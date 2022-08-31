@@ -55,7 +55,9 @@ export class ListMovieReviewComponent implements OnInit {
    }
    getMovieImg(movieId:number): string{
     for(let movie of this.movies) {
+      // console.log(movie.movie_id);
       if(movie.movie_id === movieId) {
+        // console.log(movie.movie_id);
         return movie.thumbnail;
       }
     }
