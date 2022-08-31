@@ -3,5 +3,5 @@ export class MovieReview{
     date_posted?: string;
     description?: string;
     rating?: number;
-    movie_id?: number;
+    movie_Id?: number;
 }

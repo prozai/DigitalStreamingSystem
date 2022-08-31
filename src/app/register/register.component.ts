@@ -27,9 +27,9 @@ export class RegisterComponent implements OnInit {
     this.registerAdminForm = this.formBuilder.group({
       admin_id:[0],
       email:['test1@test.com', [Validators.required, Validators.email,Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]],
-      name:['testtest', [Validators.required, Validators.minLength(6), Validators.maxLength(20), Validators.pattern(/^[a-zA-Z]$/)]],
-      phone: ['91234567', [Validators.required, Validators.minLength(8),Validators.maxLength(8), Validators.pattern(/^[0-9]{8}$/)]],
-      username:['test123', [Validators.required, Validators.minLength(6), Validators.maxLength(20), Validators.pattern(/^[a-zA-Z0-9]{6, 20}$/)]],
+      name:['testtest', [Validators.required, Validators.minLength(6), Validators.maxLength(20), Validators.pattern(/^[a-zA-Z]*$/)]],
+      phone: ['91234567', [Validators.required, Validators.minLength(8),Validators.maxLength(8), Validators.pattern(/^[0-9]*$/)]],
+      username:['test123', [Validators.required, Validators.minLength(6), Validators.maxLength(20), Validators.pattern(/^[a-zA-Z0-9_]*$/)]],
       password:['password!1A', [Validators.required, Validators.minLength(6), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/)]],
 
       // admin_id:[0],

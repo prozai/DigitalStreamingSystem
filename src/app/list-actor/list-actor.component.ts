@@ -12,6 +12,7 @@ export class ListActorComponent implements OnInit {
   @Input('data') actors?:Actors[] = [];
   page: number = 1;
   actorService:ActorService;
+  searchText : any;
   // instantiates the actor service
   constructor(actorService:ActorService, private router: Router) {
     this.actorService = actorService;

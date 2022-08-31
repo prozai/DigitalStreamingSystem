@@ -19,7 +19,8 @@ export class AddActorComponent implements OnInit {
       firstName:[],
       lastName:[],
       gender:[],
-      age:[]
+      age:[],
+      profilePic:[]
   });
 }
   saveActor(){

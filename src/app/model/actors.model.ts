@@ -4,4 +4,5 @@ export class Actors{
     lastName?: string;
     gender?: string;
     age?: number;
+    profilePic?: string;
 }

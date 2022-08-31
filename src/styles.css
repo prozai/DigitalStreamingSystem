@@ -19,7 +19,12 @@ textarea:focus {
     border-color: rgb(162, 65, 165);
     box-shadow: 0 0 10px rgb(162, 65, 165);
 }
-
+form{
+    margin-top: 0;
+    margin-bottom: 0%;
+    margin-left: 0%;
+    padding-left: 0;
+}
 /* Desktop Screen */
 @media only screen and (min-width: 1080px) {
     div {
@@ -102,10 +107,6 @@ textarea:focus {
         transform: translateY(4px);
     }
 
-    #forgetPwd {
-        text-decoration: none;
-    }
-
     #loginBtn {
         background-color: rgb(162, 65, 165);
         width: 200px;
@@ -128,7 +129,7 @@ textarea:focus {
     }
 
     #background {
-        background-color: grey;
+        background-color: white;
 
     }
 
@@ -159,10 +160,7 @@ textarea:focus {
     }
 
     form {
-        max-width: 90%;
-        padding-left: 5%;
-        padding-right: 5%;
-
+        max-width: 100%;
     }
     .textarea{
         padding-left: 5px;

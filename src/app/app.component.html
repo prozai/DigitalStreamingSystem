@@ -1,6 +1,7 @@
 <div class="">
   <div><h2>Administrator's Digital Streaming System</h2></div>
   <!-- TODO: implement tabs on activation -->
+  <div class="container" id="bigcontainer">
   <ul class="nav nav-tabs" aria-controls="ViewMovies" id="myTab" role="tablist">
     <li class="nav-item">
       <a data-toggle="tab" role="tab" class="nav-link active" id="ViewMovies-tab" routerLink="/movies"
@@ -14,10 +15,7 @@
       <a data-toggle="tab" role="tab" aria-controls="ViewMovieReview" aria-selected="" class="nav-link active"
         routerLink="/movie-reviews" routerLinkActive="active" aria-selected="false">View Movie Review</a>
     </li>
-    <li class="nav-item" aria-selected="false">
-      <a data-toggle="tab" role="tab" class="nav-link active" routerLink="/search-actors" routerLinkActive="active"
-        aria-selected="false">Search</a>
-    </li>
+    
     <li class="nav-item">
       <a data-toggle="tab" role="tab" class="nav-link active" routerLink="/add-actor" routerLinkActive="active"
         aria-selected="false">Add Actor</a>
@@ -30,19 +28,9 @@
       <a data-toggle="tab" role="tab" class="nav-link active" routerLink="/add-movie-review" routerLinkActive="active"
         aria-selected="false">Add Movie Review</a>
     </li>
-    <li class="nav-item">
-      <a data-toggle="tab" role="tab" class="nav-link active" routerLink="/add-actor-profile-pic" routerLinkActive="active"
-        aria-selected="false">Add Actor With Profile pic</a>
-    </li>
-    <!-- <li>
-              <form class="form-inline" onsubmit="">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
-            </li> -->
             <button (click)="logOut()"  class="btn btn-warning">Logout </button>
   </ul>
-
+</div>
   <!-- <div class="tab-content" id="myTabContent">
           
         </div> -->

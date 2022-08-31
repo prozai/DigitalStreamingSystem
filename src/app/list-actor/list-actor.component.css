@@ -6,3 +6,30 @@
     background-color: rgb(162, 65, 165);
     color: white;
   }
+  .my-pagination ::ng-deep .ngx-pagination .current {
+    background-color: rgb(162, 65, 165);
+  }
+  #thumbnail:hover{
+    cursor: pointer;
+    z-index: 1;
+    transition: transform .2s;
+    transform: scale(1.2);
+  }
+  #searchbar{
+    padding-left: 0;
+  }
+  #searchbar:hover{
+    cursor: pointer;
+    z-index: 1;
+    transition: transform .2s;
+    transform: scale(1.01);
+  }
+  input:focus { 
+    outline: none !important;
+    border-color: rgb(162, 65, 165);
+    box-shadow: 0 0 10px rgb(162, 65, 165);
+  }
+  #bigcontainer{
+    margin-top:0.5%;
+    margin-bottom:0.5%;
+  }

@@ -26,19 +26,20 @@
    </table>
 </div> -->
 <!-- <input class="form-control" type="text" placeholder="Search" aria-label="Search" [(ngModel)]="movie_title"> -->
-<nav class="navbar">
-   <ul class="navbar-nav">
-     <input class="form-control" type="text" placeholder="Search" class="form-control" [(ngModel)]= "searchText">
-   </ul>
- </nav>
-<div class="container">
+
+<div class="container" id="bigcontainer">
+   <nav >
+      <ul id="searchbar">
+        <input class="form-control" type="text" placeholder="Search For Movie" class="form-control" [(ngModel)]= "searchText">
+      </ul>
+    </nav>
    <div class="album py-5 bg-dark" class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3" >
-      <div class="" *ngFor="let movie of movies | filter: searchText | paginate: { itemsPerPage: 10, currentPage: page }" > <!--| filter:movie_title-->
+      <div id="thumbnail" class="" *ngFor="let movie of movies | filter: searchText | paginate: { itemsPerPage: 10, currentPage: page }" > <!--| filter:movie_title-->
          
-         <div>
+         <div >
             <div class="col">
                <div class="card shadow-sm" >
-                  <img class="bd-placeholder-img card-img-top" width="100%" height="100%" role="img" src="{{movie.thumbnail}}" alt="{{movie.title}}"
+                  <img  class="bd-placeholder-img card-img-top rounded img-thumbnail" width="100%" height="100%" role="img" src="{{movie.thumbnail}}" alt="{{movie.title}}"
                   aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false" (click)="updateMovie(movie.movie_id)"/>
                   <div class="card-body">
                      <!-- <td>{{movie.movie_id}}</td> -->
